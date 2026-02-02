@@ -1,0 +1,237 @@
+/* Simple Valentine theme */
+:root {
+  --bg1: #ffb3d9;
+  --bg2: #ffd1e8;
+  --card: rgba(255, 255, 255, 0.78);
+  --text: #3a0b25;
+  --muted: rgba(58, 11, 37, 0.75);
+  --yes: #ff2e88;
+  --yes2: #ff5aa7;
+  --no: rgba(58, 11, 37, 0.12);
+  --shadow: 0 20px 60px rgba(58, 11, 37, 0.22);
+  --rose-tile: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27120%27%20height%3D%27120%27%20viewBox%3D%270%200%20120%20120%27%3E%3Cg%20fill%3D%27%23ff2e88%27%20fill-opacity%3D%270.55%27%3E%3Ccircle%20cx%3D%2760%27%20cy%3D%2744%27%20r%3D%2712%27%2F%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%2710%27%2F%3E%3Ccircle%20cx%3D%2772%27%20cy%3D%2748%27%20r%3D%2710%27%2F%3E%3Ccircle%20cx%3D%2760%27%20cy%3D%2758%27%20r%3D%2711%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23ff2e88%27%20stroke-opacity%3D%270.45%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M60%2064%20C60%2082%2056%2090%2046%20104%27%2F%3E%3Cpath%20d%3D%27M60%2064%20C62%2080%2068%2090%2078%20104%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  --rose-tile-dark: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27120%27%20height%3D%27120%27%20viewBox%3D%270%200%20120%20120%27%3E%3Cg%20fill%3D%27%23c4003d%27%20fill-opacity%3D%270.55%27%3E%3Ccircle%20cx%3D%2760%27%20cy%3D%2744%27%20r%3D%2712%27%2F%3E%3Ccircle%20cx%3D%2748%27%20cy%3D%2748%27%20r%3D%2710%27%2F%3E%3Ccircle%20cx%3D%2772%27%20cy%3D%2748%27%20r%3D%2710%27%2F%3E%3Ccircle%20cx%3D%2760%27%20cy%3D%2758%27%20r%3D%2711%27%2F%3E%3C%2Fg%3E%3Cg%20fill%3D%27none%27%20stroke%3D%27%23c4003d%27%20stroke-opacity%3D%270.45%27%20stroke-width%3D%273%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M60%2064%20C60%2082%2056%2090%2046%20104%27%2F%3E%3Cpath%20d%3D%27M60%2064%20C62%2080%2068%2090%2078%20104%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background:
+    radial-gradient(1000px 700px at 20% 10%, rgba(255, 255, 255, 0.55), transparent 55%),
+    radial-gradient(900px 700px at 80% 0%, rgba(255, 255, 255, 0.45), transparent 60%),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  transition: background 700ms ease, color 400ms ease;
+}
+
+body.accepted {
+  --bg1: #2a0011;
+  --bg2: #5a001f;
+  --card: rgba(0, 0, 0, 0.82);
+  --text: #ffe6f2;
+  --muted: rgba(255, 230, 242, 0.78);
+  --no: rgba(255, 230, 242, 0.12);
+  --shadow: 0 26px 80px rgba(0, 0, 0, 0.55);
+}
+
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.atmosphere::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background-image: var(--rose-tile);
+  background-size: 140px 140px;
+  background-repeat: repeat;
+  opacity: 0.10;
+  transform: rotate(-7deg);
+  filter: blur(0.15px);
+  mix-blend-mode: multiply;
+  animation: rosesDrift 22s linear infinite;
+}
+
+body.accepted .atmosphere::before {
+  background-image: var(--rose-tile-dark);
+  opacity: 0.26;
+  mix-blend-mode: soft-light;
+}
+
+.atmosphere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 800px at 50% 35%, transparent 55%, rgba(0, 0, 0, 0.26) 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.035), rgba(255,255,255,0.035) 1px, transparent 1px, transparent 3px);
+  opacity: 0.18;
+  mix-blend-mode: multiply;
+}
+
+body.accepted .atmosphere::after {
+  opacity: 0.42;
+}
+
+@keyframes rosesDrift {
+  to {
+    transform: rotate(-7deg) translate3d(-140px, 110px, 0);
+  }
+}
+
+.card {
+  width: min(680px, 100%);
+  background: var(--card);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 600ms ease, box-shadow 600ms ease, border-color 600ms ease;
+  z-index: 1;
+}
+
+body.accepted .card {
+  border-color: rgba(255, 46, 136, 0.22);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(18px 18px at 12% 24%, rgba(255, 46, 136, 0.30), transparent 60%),
+    radial-gradient(22px 22px at 80% 30%, rgba(255, 46, 136, 0.26), transparent 60%),
+    radial-gradient(16px 16px at 60% 75%, rgba(255, 46, 136, 0.22), transparent 60%);
+  pointer-events: none;
+  filter: blur(0.2px);
+}
+
+.kicker {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--muted);
+}
+
+.title {
+  margin: 0 0 10px 0;
+  font-size: clamp(34px, 4.2vw, 52px);
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin: 0 0 22px 0;
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 18px 0 8px 0;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 120ms ease, filter 120ms ease, box-shadow 120ms ease;
+  min-width: 120px;
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(255, 46, 136, 0.35);
+  outline-offset: 3px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+.btn:active {
+  transform: translateY(0px) scale(0.99);
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, var(--yes), var(--yes2));
+  color: white;
+  box-shadow: 0 12px 30px rgba(255, 46, 136, 0.35);
+}
+
+.btn-no {
+  background: var(--no);
+  color: var(--text);
+}
+
+.ideas {
+  margin-top: 18px;
+  text-align: left;
+  color: var(--muted);
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--text);
+}
+
+details ul {
+  margin: 10px 0 0 18px;
+  padding: 0;
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti i {
+  position: absolute;
+  top: -16px;
+  width: 10px;
+  height: 16px;
+  border-radius: 3px;
+  opacity: 0.95;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 40px)) rotate(720deg);
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn, .confetti i { animation: none !important; transition: none !important; }
+  .atmosphere::before { animation: none !important; }
+}
