@@ -2,6 +2,7 @@ const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const subtitle = document.getElementById("subtitle");
 const confetti = document.getElementById("confetti");
+const afterYes = document.getElementById("afterYes");
 const rizzAudio = document.getElementById("rizzAudio");
 const marvinAudio = document.getElementById("marvinAudio");
 
@@ -119,6 +120,7 @@ noBtn.addEventListener("pointerdown", () => {
 
 yesBtn.addEventListener("click", () => {
   document.body.classList.add("accepted");
+  if (afterYes) afterYes.hidden = false;
   setSubtitle("Yay!! I love you. Happy Valentine’s Day Bubby! 💗");
   launchConfetti();
   stopAllAudio();

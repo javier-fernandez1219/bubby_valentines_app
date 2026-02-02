@@ -33,6 +33,68 @@ body {
   transition: background 700ms ease, color 400ms ease;
 }
 
+.stage {
+  width: min(900px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  z-index: 1;
+}
+
+.after-yes {
+  width: min(900px, 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.after-yes[hidden] {
+  display: none !important;
+}
+
+.after-yes figure {
+  margin: 0;
+}
+
+.after-yes img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.after-yes__dog {
+  width: min(420px, 86vw);
+}
+
+.after-yes__cats {
+  width: min(300px, 70vw);
+  align-self: center;
+  text-align: center;
+  color: var(--muted);
+}
+
+.after-yes__cats figcaption {
+  margin-top: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 720px) {
+  .after-yes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .after-yes__cats {
+    width: min(420px, 86vw);
+  }
+}
+
 body.accepted {
   --bg1: #2a0011;
   --bg2: #5a001f;
