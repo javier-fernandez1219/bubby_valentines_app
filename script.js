@@ -120,7 +120,11 @@ noBtn.addEventListener("pointerdown", () => {
 
 yesBtn.addEventListener("click", () => {
   document.body.classList.add("accepted");
-  if (afterYes) afterYes.hidden = false;
+  if (afterYes) {
+    afterYes.hidden = false;
+    // On mobile the new section can be below the fold, so scroll it into view.
+    afterYes.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
   setSubtitle("Yay!! I love you. Happy Valentine’s Day Bubby! 💗");
   launchConfetti();
   stopAllAudio();
