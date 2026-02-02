@@ -97,15 +97,6 @@ function growYesButton() {
   yesBtn.style.transform = `scale(${scale})`;
 }
 
-const noLines = [
-  "Are you sure? 🥺",
-  "Wait—think about the snacks.",
-  "I’ll be extra nice. Promise.",
-  "This button is getting shy…",
-  "Okay but… I really like you.",
-  "Last chance (but I’ll still ask nicely).",
-];
-
 noBtn.addEventListener("click", () => {
   noCount += 1;
   setSubtitle(noLines[Math.min(noLines.length - 1, noCount - 1)]);
@@ -115,6 +106,8 @@ noBtn.addEventListener("click", () => {
 
 noBtn.addEventListener("mouseenter", () => {
   playRizzThrottled();
+  noCount += 1;
+  growYesButton();
   dodgeNoButton();
 });
 
@@ -132,5 +125,5 @@ yesBtn.addEventListener("click", () => {
   tryPlay(marvinAudio);
   yesBtn.disabled = true;
   noBtn.disabled = true;
-  yesBtn.textContent = "Yes (locked in)";
+  yesBtn.textContent = "Yes!! (we locked in twin)";
 });
